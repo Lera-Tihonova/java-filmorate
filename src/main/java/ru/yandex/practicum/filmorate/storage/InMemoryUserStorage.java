@@ -1,22 +1,23 @@
 package ru.yandex.practicum.filmorate.storage;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import ru.yandex.practicum.filmorate.exception.NotFoundException;
 import ru.yandex.practicum.filmorate.model.User;
 import java.util.*;
 
+@Slf4j
 @Component
-public class InMemoryUserStorage {
-    private static final Logger log = LoggerFactory.getLogger(InMemoryUserStorage.class);
+public class InMemoryUserStorage implements UserStorage {
     private final Map<Integer, User> users = new HashMap<>();
     private int nextId = 1;
 
+    @Override
     public Collection<User> getAll() {
         return users.values();
     }
 
+    @Override
     public User add(User user) {
         user.setId(nextId++);
         users.put(user.getId(), user);
@@ -24,6 +25,7 @@ public class InMemoryUserStorage {
         return user;
     }
 
+    @Override
     public User update(User user) {
         if (!users.containsKey(user.getId())) {
             log.warn("Пользователь с id {} не найден для обновления", user.getId());
@@ -34,11 +36,9 @@ public class InMemoryUserStorage {
         return user;
     }
 
+    @Override
     public User getById(Integer id) {
-        User user = users.get(id);
-        if (user == null) {
-            throw new NotFoundException("Пользователь с id " + id + " не найден");
-        }
-        return user;
+        return Optional.ofNullable(users.get(id))
+                .orElseThrow(() -> new NotFoundException("Пользователь с id " + id + " не найден"));
     }
 }

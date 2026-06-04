@@ -4,9 +4,10 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import javax.validation.Valid;
+import ru.yandex.practicum.filmorate.exception.ValidationException;
 import ru.yandex.practicum.filmorate.model.Film;
 import ru.yandex.practicum.filmorate.service.FilmService;
+import javax.validation.Valid;
 import java.util.Collection;
 
 @Slf4j
@@ -32,6 +33,9 @@ public class FilmController {
     @PutMapping
     public Film update(@Valid @RequestBody Film film) {
         log.debug("Запрос на обновление фильма: {}", film);
+        if (film.getId() == null) {
+            throw new ValidationException("Id фильма обязателен для обновления");
+        }
         return filmService.update(film);
     }
 }

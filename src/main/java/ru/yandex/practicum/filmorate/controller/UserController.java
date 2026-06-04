@@ -4,9 +4,10 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import javax.validation.Valid;
+import ru.yandex.practicum.filmorate.exception.ValidationException;
 import ru.yandex.practicum.filmorate.model.User;
 import ru.yandex.practicum.filmorate.service.UserService;
+import javax.validation.Valid;
 import java.util.Collection;
 
 @Slf4j
@@ -32,6 +33,9 @@ public class UserController {
     @PutMapping
     public User update(@Valid @RequestBody User user) {
         log.debug("Запрос на обновление пользователя: {}", user);
+        if (user.getId() == null) {
+            throw new ValidationException("Id пользователя обязателен для обновления");
+        }
         return userService.update(user);
     }
 }
