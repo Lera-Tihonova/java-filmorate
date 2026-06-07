@@ -31,7 +31,7 @@ public class FilmController {
     }
 
     @PutMapping
-    public Film update(@Valid @RequestBody Film film) {
+    public Film update(@RequestBody Film film) {
         log.debug("Запрос на обновление фильма: {}", film);
         if (film.getId() == null) {
             throw new ValidationException("Id фильма обязателен для обновления");

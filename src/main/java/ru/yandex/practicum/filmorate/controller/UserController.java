@@ -33,9 +33,6 @@ public class UserController {
     @PutMapping
     public User update(@Valid @RequestBody User user) {
         log.debug("Запрос на обновление пользователя: {}", user);
-        if (user.getId() == null) {
-            throw new ValidationException("Id пользователя обязателен для обновления");
-        }
         return userService.update(user);
     }
 }
