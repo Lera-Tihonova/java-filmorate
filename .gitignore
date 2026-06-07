@@ -44,3 +44,44 @@ build/
 
 *.db
 db/*
+# Compiled files
+*.class
+*.jar
+
+# Build directories
+target/
+out/
+build/
+
+# IDE files
+.idea/
+*.iml
+*.iws
+*.ipr
+.DS_Store
+
+# Logs
+*.log
+
+# Maven
+mvnw
+mvnw.cmd
+.mvn/
+
+# System files
+Thumbs.db
+
+# IDE
+.idea/
+*.iml
+*.iws
+*.ipr
+.DS_Store
+
+# Maven wrapper
+mvnw
+mvnw.cmd
+.mvn/
+
+# Logs
+*.log
