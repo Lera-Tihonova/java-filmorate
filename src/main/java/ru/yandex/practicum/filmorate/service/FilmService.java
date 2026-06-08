@@ -54,11 +54,10 @@ public class FilmService {
         log.debug("Пользователь {} удалил лайк у фильма {}", userId, filmId);
     }
 
-    public List<Film> getPopular(Integer count) {
-        int limit = (count != null && count > 0) ? count : 10;
+    public List<Film> getPopular(int count) {
         return filmStorage.getAll().stream()
                 .sorted(Comparator.comparingInt(f -> -f.getLikes().size()))
-                .limit(limit)
+                .limit(count)
                 .collect(Collectors.toList());
     }
 
