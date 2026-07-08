@@ -4,51 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a2e6f542-f362-4381-aea1-a04b9cb6f94b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.github/workflows/api-tests.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/checkstyle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lombok.config" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/yandex/practicum/filmorate/FilmorateApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/yandex/practicum/filmorate/controller/FilmController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/yandex/practicum/filmorate/controller/GenreController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/yandex/practicum/filmorate/controller/MpaController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/yandex/practicum/filmorate/controller/UserController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/yandex/practicum/filmorate/exception/ErrorHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/yandex/practicum/filmorate/exception/ErrorResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/yandex/practicum/filmorate/exception/NotFoundException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/yandex/practicum/filmorate/exception/ValidationException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/yandex/practicum/filmorate/model/Film.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/yandex/practicum/filmorate/model/FriendshipStatus.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/yandex/practicum/filmorate/model/Genre.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/yandex/practicum/filmorate/model/Mpa.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/yandex/practicum/filmorate/model/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/yandex/practicum/filmorate/service/FilmService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/yandex/practicum/filmorate/service/GenreService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/yandex/practicum/filmorate/service/MpaService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/yandex/practicum/filmorate/service/UserService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/yandex/practicum/filmorate/storage/FilmStorage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/yandex/practicum/filmorate/storage/GenreStorage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/yandex/practicum/filmorate/storage/MpaStorage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/yandex/practicum/filmorate/storage/UserStorage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/yandex/practicum/filmorate/storage/db/FilmDbStorage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/yandex/practicum/filmorate/storage/db/GenreDbStorage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/yandex/practicum/filmorate/storage/db/MpaDbStorage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/yandex/practicum/filmorate/storage/db/UserDbStorage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/data.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/schema.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/ru/yandex/practicum/filmorate/FilmorateApplicationTests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/ru/yandex/practicum/filmorate/storage/db/FilmDbStorageTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/ru/yandex/practicum/filmorate/storage/db/GenreDbStorageTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/ru/yandex/practicum/filmorate/storage/db/MpaDbStorageTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/ru/yandex/practicum/filmorate/storage/db/UserDbStorageTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/suppressions.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/filmorate.mv.db" beforeDir="false" />
-    </list>
+    <list default="true" id="a2e6f542-f362-4381-aea1-a04b9cb6f94b" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -85,31 +41,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.FilmorateApplication.executor": "Run",
-    "JUnit.FilmControllerTest.executor": "Run",
-    "JUnit.FilmorateApplicationTests.executor": "Run",
-    "JUnit.UserValidationTest.executor": "Run",
-    "Maven.Unknown [clean].executor": "Run",
-    "Maven.Unknown [compile].executor": "Run",
-    "Maven.filmorate [clean].executor": "Run",
-    "Maven.filmorate [compile].executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "add-database",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/lera/java-filmorate",
-    "project.structure.last.edited": "SDKs",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.FilmorateApplication.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.FilmControllerTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.FilmorateApplicationTests.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserValidationTest.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.Unknown [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.Unknown [compile].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.filmorate [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.filmorate [compile].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;add-database&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/lera/java-filmorate&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
   },
-  "keyToStringList": {
-    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
-      "SQL"
+  &quot;keyToStringList&quot;: {
+    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
+      &quot;SQL&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Application.FilmorateApplication">
     <configuration name="FilmorateApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ru.yandex.practicum.filmorate.FilmorateApplication" />
