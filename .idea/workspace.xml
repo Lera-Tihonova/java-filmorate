@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a2e6f542-f362-4381-aea1-a04b9cb6f94b" name="Changes" comment="" />
+    <list default="true" id="a2e6f542-f362-4381-aea1-a04b9cb6f94b" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/filmorate.mv.db" beforeDir="false" afterPath="$PROJECT_DIR$/db/filmorate.mv.db" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -41,31 +44,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.FilmorateApplication.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.FilmControllerTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.FilmorateApplicationTests.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.UserValidationTest.executor&quot;: &quot;Run&quot;,
-    &quot;Maven.Unknown [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.Unknown [compile].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.filmorate [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.filmorate [compile].executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;add-database&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/lera/java-filmorate&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.FilmorateApplication.executor": "Run",
+    "JUnit.FilmControllerTest.executor": "Run",
+    "JUnit.FilmorateApplicationTests.executor": "Run",
+    "JUnit.UserValidationTest.executor": "Run",
+    "Maven.Unknown [clean].executor": "Run",
+    "Maven.Unknown [compile].executor": "Run",
+    "Maven.filmorate [clean].executor": "Run",
+    "Maven.filmorate [compile].executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "add-database-fix",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/lera/java-filmorate",
+    "project.structure.last.edited": "SDKs",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
-      &quot;SQL&quot;
+  "keyToStringList": {
+    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
+      "SQL"
     ]
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Application.FilmorateApplication">
     <configuration name="FilmorateApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ru.yandex.practicum.filmorate.FilmorateApplication" />
