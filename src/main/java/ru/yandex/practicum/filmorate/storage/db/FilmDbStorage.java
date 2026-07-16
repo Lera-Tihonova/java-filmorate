@@ -112,7 +112,7 @@ public class FilmDbStorage implements FilmStorage {
         }
 
         Film film = films.get(0);
-        film.setLikes(getLikesIds(id));
+        film.setLikes(getLikesById(id));
         film.setGenres(new LinkedHashSet<>(genreStorage.getGenresByFilmId(id)));
 
         return Optional.of(film);
@@ -122,10 +122,19 @@ public class FilmDbStorage implements FilmStorage {
     public List<Film> findAll() {
         String sql = "SELECT * FROM films";
         List<Film> films = jdbcTemplate.query(sql, filmMapper);
-        films.forEach(film -> {
-            film.setLikes(getLikesIds(film.getId()));
-            film.setGenres(new LinkedHashSet<>(genreStorage.getGenresByFilmId(film.getId())));
-        });
+
+        if (films.isEmpty()) {
+            return films;
+        }
+
+        Map<Long, Set<Long>> likesMap = getLikesForFilms(films);
+        Map<Long, Set<Genre>> genresMap = getGenresForFilms(films);
+
+        for (Film film : films) {
+            film.setLikes(likesMap.getOrDefault(film.getId(), new HashSet<>()));
+            film.setGenres(genresMap.getOrDefault(film.getId(), new LinkedHashSet<>()));
+        }
+
         return films;
     }
 
@@ -149,13 +158,24 @@ public class FilmDbStorage implements FilmStorage {
 
     @Override
     public List<Film> getPopularFilms(int count) {
-        String sql = "SELECT f.*, COUNT(l.user_id) as likes_count FROM films f LEFT JOIN likes l ON l.film_id = f.id GROUP BY f.id ORDER BY likes_count DESC LIMIT ?";
+        String sql = "SELECT f.*, COUNT(l.user_id) as likes_count FROM films f " +
+                "LEFT JOIN likes l ON l.film_id = f.id " +
+                "GROUP BY f.id ORDER BY likes_count DESC LIMIT ?";
 
         List<Film> films = jdbcTemplate.query(sql, filmMapper, count);
-        films.forEach(film -> {
-            film.setLikes(getLikesIds(film.getId()));
-            film.setGenres(new LinkedHashSet<>(genreStorage.getGenresByFilmId(film.getId())));
-        });
+
+        if (films.isEmpty()) {
+            return films;
+        }
+
+        Map<Long, Set<Long>> likesMap = getLikesForFilms(films);
+        Map<Long, Set<Genre>> genresMap = getGenresForFilms(films);
+
+        for (Film film : films) {
+            film.setLikes(likesMap.getOrDefault(film.getId(), new HashSet<>()));
+            film.setGenres(genresMap.getOrDefault(film.getId(), new LinkedHashSet<>()));
+        }
+
         return films;
     }
 
@@ -166,9 +186,50 @@ public class FilmDbStorage implements FilmStorage {
         return count != null && count > 0;
     }
 
-    private Set<Long> getLikesIds(Long filmId) {
+    private Set<Long> getLikesById(Long filmId) {
         String sql = "SELECT user_id FROM likes WHERE film_id = ?";
         List<Long> userIds = jdbcTemplate.queryForList(sql, Long.class, filmId);
         return new HashSet<>(userIds);
+    }
+
+    private Map<Long, Set<Long>> getLikesForFilms(List<Film> films) {
+        if (films.isEmpty()) return new HashMap<>();
+
+        String ids = films.stream()
+                .map(f -> String.valueOf(f.getId()))
+                .collect(Collectors.joining(", "));
+
+        String sql = "SELECT film_id, user_id FROM likes WHERE film_id IN (" + ids + ")";
+
+        Map<Long, Set<Long>> result = new HashMap<>();
+        jdbcTemplate.query(sql, rs -> {
+            Long filmId = rs.getLong("film_id");
+            Long userId = rs.getLong("user_id");
+            result.computeIfAbsent(filmId, k -> new HashSet<>()).add(userId);
+        });
+        return result;
+    }
+
+    private Map<Long, Set<Genre>> getGenresForFilms(List<Film> films) {
+        if (films.isEmpty()) return new HashMap<>();
+
+        String ids = films.stream()
+                .map(f -> String.valueOf(f.getId()))
+                .collect(Collectors.joining(", "));
+
+        String sql = "SELECT fg.film_id, g.id, g.name FROM film_genres fg " +
+                "JOIN genres g ON fg.genre_id = g.id " +
+                "WHERE fg.film_id IN (" + ids + ")";
+
+        Map<Long, Set<Genre>> result = new HashMap<>();
+        jdbcTemplate.query(sql, rs -> {
+            Long filmId = rs.getLong("film_id");
+            Genre genre = Genre.builder()
+                    .id(rs.getInt("id"))
+                    .name(rs.getString("name"))
+                    .build();
+            result.computeIfAbsent(filmId, k -> new LinkedHashSet<>()).add(genre);
+        });
+        return result;
     }
 }

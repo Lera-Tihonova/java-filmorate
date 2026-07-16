@@ -9,6 +9,7 @@ import ru.yandex.practicum.filmorate.storage.GenreStorage;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Repository
 @RequiredArgsConstructor
@@ -35,7 +36,9 @@ public class GenreDbStorage implements GenreStorage {
 
     @Override
     public List<Genre> getGenresByFilmId(Long filmId) {
-        String sql = "SELECT g.* FROM genres g JOIN film_genres fg ON fg.genre_id = g.id WHERE fg.film_id = ? ORDER BY g.id";
+        String sql = "SELECT g.* FROM genres g " +
+                "JOIN film_genres fg ON fg.genre_id = g.id " +
+                "WHERE fg.film_id = ? ORDER BY g.id";
         return jdbcTemplate.query(sql, genreMapper, filmId);
     }
 
@@ -44,11 +47,15 @@ public class GenreDbStorage implements GenreStorage {
         if (genreIds == null || genreIds.isEmpty()) {
             return;
         }
+        String inClause = genreIds.stream()
+                .map(String::valueOf)
+                .collect(Collectors.joining(", "));
 
-        for (Integer genreId : genreIds) {
-            if (!findById(genreId).isPresent()) {
-                throw new IllegalArgumentException("Жанр с id " + genreId + " не найден");
-            }
+        String checkSql = "SELECT COUNT(*) FROM genres WHERE id IN (" + inClause + ")";
+        Integer count = jdbcTemplate.queryForObject(checkSql, Integer.class);
+
+        if (count == null || count != genreIds.size()) {
+            throw new IllegalArgumentException("Один или несколько жанров не найдены");
         }
 
         String sql = "INSERT INTO film_genres (film_id, genre_id) VALUES (?, ?)";

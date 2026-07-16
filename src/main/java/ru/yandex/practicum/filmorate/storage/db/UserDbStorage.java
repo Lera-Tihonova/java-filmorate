@@ -12,6 +12,7 @@ import ru.yandex.practicum.filmorate.storage.UserStorage;
 import java.sql.PreparedStatement;
 import java.sql.Statement;
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Repository
 @RequiredArgsConstructor
@@ -71,7 +72,7 @@ public class UserDbStorage implements UserStorage {
         }
 
         User user = users.get(0);
-        user.setFriends(getFriendsIds(id));
+        user.setFriends(getFriendsIds(user.getId()));
         return Optional.of(user);
     }
 
@@ -79,7 +80,16 @@ public class UserDbStorage implements UserStorage {
     public List<User> findAll() {
         String sql = "SELECT * FROM users";
         List<User> users = jdbcTemplate.query(sql, userMapper);
-        users.forEach(user -> user.setFriends(getFriendsIds(user.getId())));
+
+        if (users.isEmpty()) {
+            return users;
+        }
+
+        Map<Long, Set<Long>> friendsMap = getFriendsForUsers(users);
+        for (User user : users) {
+            user.setFriends(friendsMap.getOrDefault(user.getId(), new HashSet<>()));
+        }
+
         return users;
     }
 
@@ -118,7 +128,9 @@ public class UserDbStorage implements UserStorage {
 
     @Override
     public List<User> getCommonFriends(Long userId, Long otherUserId) {
-        String sql = "SELECT u.* FROM users u JOIN friends f1 ON f1.friend_id = u.id AND f1.user_id = ? JOIN friends f2 ON f2.friend_id = u.id AND f2.user_id = ?";
+        String sql = "SELECT u.* FROM users u " +
+                "JOIN friends f1 ON f1.friend_id = u.id AND f1.user_id = ? " +
+                "JOIN friends f2 ON f2.friend_id = u.id AND f2.user_id = ?";
         return jdbcTemplate.query(sql, userMapper, userId, otherUserId);
     }
 
@@ -133,5 +145,23 @@ public class UserDbStorage implements UserStorage {
         String sql = "SELECT friend_id FROM friends WHERE user_id = ?";
         List<Long> friendIds = jdbcTemplate.queryForList(sql, Long.class, userId);
         return new HashSet<>(friendIds);
+    }
+
+    private Map<Long, Set<Long>> getFriendsForUsers(List<User> users) {
+        if (users.isEmpty()) return new HashMap<>();
+
+        String ids = users.stream()
+                .map(u -> String.valueOf(u.getId()))
+                .collect(Collectors.joining(", "));
+
+        String sql = "SELECT user_id, friend_id FROM friends WHERE user_id IN (" + ids + ")";
+
+        Map<Long, Set<Long>> result = new HashMap<>();
+        jdbcTemplate.query(sql, rs -> {
+            Long userId = rs.getLong("user_id");
+            Long friendId = rs.getLong("friend_id");
+            result.computeIfAbsent(userId, k -> new HashSet<>()).add(friendId);
+        });
+        return result;
     }
 }
