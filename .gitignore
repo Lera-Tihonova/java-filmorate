@@ -1,5 +1,16 @@
+# Compiled class file
 *.class
+
+# Log file
 *.log
+
+# BlueJ files
+*.ctxt
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
 *.jar
 *.war
 *.nar
@@ -7,81 +18,27 @@
 *.zip
 *.tar.gz
 *.rar
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
-out/
-target/
-!.mvn/wrapper/maven-wrapper.jar
-!**/src/main/**/target/
-!**/src/test/**/target/
-
-### STS ###
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings
-.springBeans
-.sts4-cache
-
-### IntelliJ IDEA ###
-.idea
-*.iws
-*.iml
-*.ipr
-
-### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
-build/
-!**/src/main/**/build/
-!**/src/test/**/build/
-
-### VS Code ###
-.vscode/
-
-*.db
-db/*
-# Compiled files
-*.class
-*.jar
-
-# Build directories
-target/
-out/
-build/
-
-# IDE files
-.idea/
-*.iml
-*.iws
-*.ipr
-.DS_Store
-
-# Logs
-*.log
-
-# Maven
-mvnw
-mvnw.cmd
-.mvn/
-
-# System files
-Thumbs.db
 
 # IDE
 .idea/
 *.iml
-*.iws
-*.ipr
+.vscode/
+.settings/
+.project
+.classpath
+
+# OS
 .DS_Store
+Thumbs.db
 
-# Maven wrapper
-mvnw
-mvnw.cmd
-.mvn/
+# Build
+target/
+out/
+build/
 
-# Logs
-*.log
+# Database
+db/*.mv.db
+db/*.trace.db
